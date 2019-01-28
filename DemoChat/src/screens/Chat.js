@@ -53,6 +53,7 @@ class Chat extends React.Component {
   }
 
   subscribeToChat = (language) => {
+    console.log(this.chatSubscription);
     if (this.chatSubscription){
       this.unsubscribeFromChat();
     }
@@ -119,7 +120,7 @@ class Chat extends React.Component {
 
   onLanguageChange = (itemValue, itemIndex) => {
     this.subscribeToChat(itemValue);
-    this.setState({language: itemValue});
+    this.setState({messages:[] ,language: itemValue});
   }
 
   onHeaderClick = () => {
