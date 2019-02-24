@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {firebase , firebaseApi} from './firebase'
+import {firebase , firebaseApi} from './firebase';
 import LoginOrSignup from './screens/LoginOrSignup';
 import Chat from './screens/Chat';
 

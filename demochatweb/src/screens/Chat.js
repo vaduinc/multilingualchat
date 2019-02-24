@@ -66,6 +66,7 @@ class Chat extends React.Component {
     // const user = getCurrentUser();
 
     let myUser = {
+      _id: this.props.user.uid,
       id: this.props.user.uid,
       name : this.props.user.email
     }
@@ -133,7 +134,7 @@ class Chat extends React.Component {
 
   render() {
 
-    const { language , expanded, loading } = this.state;
+    const {  expanded, loading } = this.state;
     
     if (loading) {
       return null;
@@ -159,8 +160,6 @@ class Chat extends React.Component {
                               <select onChange={this.onLanguageChange}> >
                                 <option selected  value="en">English</option>
                                 <option  value="es">Español</option>
-                                {/* {language==='en'?'selected':''} 
-                                {this.state.language==='es'?'selected':''} */}
                               </select>
                             </div>
                         </div>
