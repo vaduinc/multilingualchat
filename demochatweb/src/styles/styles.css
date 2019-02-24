@@ -25,11 +25,33 @@
   border-color : red;
 }
 
+.half  {
+  flex-basis: 50%;
+  border-width : 0;
+  border-style: solid;
+  border-color : white;
+  text-align: center;
+}
+
 .third  {
   flex-basis: 33.33%;
   border-width : 1;
   border-style: solid;
-  border-color : green;
+  border-color : white;
+}
+
+.twothirds  {
+  flex-basis: 66.66%;
+  border-width : 1;
+  border-style: solid;
+  border-color : black;
+}
+
+.sixth  {
+  flex-basis: 16.66%;
+  border-width : 0;
+  border-style: solid;
+  border-color :white;
 }
 
 .chatgifted {
@@ -97,6 +119,7 @@
     }
     .button_login {
       background-color: #F7931E;
+      
     }
     .button_signup {
       background-color: lightblue;
@@ -108,3 +131,7 @@
       color: black;
       margin-left: 8px;
     }
+
+    .button_login:hover {  background-color:gray; }
+    .button_signup:hover { background-color: gray; }
+    

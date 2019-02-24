@@ -62,7 +62,7 @@ class LoginOrSignup extends Component {
                 </div>
                 <div className='container gutters'>
                     <div className='one'>
-                        <label className='login_title'>React Native + Firebase</label>
+                        <label className='login_title'>React (Native) + Firebase</label>
                     </div>
                 </div>
                 <div className='container gutters'>

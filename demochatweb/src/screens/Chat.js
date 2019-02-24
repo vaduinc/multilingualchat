@@ -137,34 +137,40 @@ class Chat extends React.Component {
 
     return (
         <div >
-            <div className='container gutters'>
+              <div className='container gutters'>
                   <div className='one'>
                       <button type="button" onClick={()=> this.onHeaderClick() } >
                           Touch here for more options
                       </button>
-                      {expanded &&
-                        <div >
-                            <div >
-                                <div >
-                                    <label  >Language</label>
-                                </div>
-                                <select onChange={this.onLanguageChange}> >
-                                  <option selected  value="en">English</option>
-                                  <option  value="es">Español</option>
-                                  {/* {language==='en'?'selected':''} 
-                                  {this.state.language==='es'?'selected':''} */}
-                                </select>
-                            </div>
-                            <div >
-                                <button className='button_container button_login' type="button" onClick={this.logOff} ><label className='button_text'>Logout</label></button>
-                            </div>
-                        </div>  
-                        }
                   </div>      
-            </div>
+              </div>     
+              {expanded &&
+                <div className='container gutters'>
+                    <div className='one'>
+                        <div className='container gutters'>
+                            <div className='half'>
+                                <label  >Language</label>
+                            </div>
+                            <div className='half'>
+                              <select onChange={this.onLanguageChange}> >
+                                <option selected  value="en">English</option>
+                                <option  value="es">Español</option>
+                                {/* {language==='en'?'selected':''} 
+                                {this.state.language==='es'?'selected':''} */}
+                              </select>
+                            </div>
+                        </div>
+                        <div className='container gutters'>
+                          <div className='one'>
+                              <button className='button_container button_login' type="button" onClick={this.logOff} ><label className='button_text'>Logout</label></button>
+                          </div>
+                        </div>
+                    </div>
+                </div>  
+              }
             <div className='container gutters'>
-                <div className='third'></div>
-                <div style={{...generalCSS.third, ...generalCSS.chat_gifted}}>
+                <div className='sixth'></div>
+                <div style={{...generalCSS.twothirds, ...generalCSS.chat_gifted}}>
                 {/* <div className='chat_gifted third'> */}
                   <GiftedChat 
                       messages={this.state.messages}
@@ -174,7 +180,7 @@ class Chat extends React.Component {
                       // loadEarlier={true}
                   />
               </div>
-              <div className='third'></div>
+              <div className='sixth'></div>
             </div>
         </div>
     );
