@@ -82,7 +82,11 @@ class Chat extends React.Component {
   storeNewMessage = (message) => {  
     message.createdAt = moment(message.createdAt).format();
     message.language = this.state.language;
-    message.source = 'mobile';
+    message.source = 'web';
+    
+    // only needed because there is Mobile version, and giftedChat uses
+    // _id instead of id when loading the messages.
+    message._id = message.id; 
 
     firebaseApi.saveMessage(this.state.language,message)
       .then(()=>console.log('message saved!'));
