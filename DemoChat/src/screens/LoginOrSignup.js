@@ -2,7 +2,7 @@ import {TextInput,Text, View} from "react-native";
 import React, {Component} from "react";
 import Button from '../ui/Button';
 import generalCSS from "../styles/styles.css";
-import {signup,login} from '../api/firebaseAPI';
+import {firebaseApi} from '../firebase';
 
 class LoginOrSignup extends Component {
     constructor(props) {
@@ -23,7 +23,7 @@ class LoginOrSignup extends Component {
      */
     signMeUp = async () => {
         try {
-            await signup(this.state.username, this.state.password);
+            await firebaseApi.signup(this.state.username, this.state.password);
         } catch (error) {
             this.setState({
                 error: error.toString()
@@ -36,7 +36,7 @@ class LoginOrSignup extends Component {
      */
     logMeIn = async () => {
         try {
-            await login(this.state.username, this.state.password);
+            await firebaseApi.login(this.state.username, this.state.password);
         } catch (error) {
             this.setState({
                 error: error.toString()

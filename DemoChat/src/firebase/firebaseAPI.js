@@ -1,6 +1,6 @@
-import firebase from '@firebase/app'
-import '@firebase/auth';
-import '@firebase/firestore';
+import firebase from '@firebase/app';
+
+import { auth , db } from "./ConfigFirebase";
 
 // List of output languages.
 export const LANGUAGES = ['en', 'es'];
@@ -15,7 +15,7 @@ const CHAT_ROOM = 'mychatroom1';
    * Once subscribed, the 'user' parameter will either be null (logged out) or an Object (logged in)
    */
     export const onAuthStateChanged = (callback) => {
-        return firebase.auth().onAuthStateChanged(callback);
+        return auth.onAuthStateChanged(callback);
     }
 
     /**
@@ -25,7 +25,7 @@ const CHAT_ROOM = 'mychatroom1';
      * @param {*} password 
      */
     export const signup =  (username, password) => {
-        return firebase.auth().createUserWithEmailAndPassword(username, password);
+        return auth.createUserWithEmailAndPassword(username, password);
     }
 
     /**
@@ -34,21 +34,21 @@ const CHAT_ROOM = 'mychatroom1';
      * @param {*} password 
      */
     export const login = (username, password) => {
-        return firebase.auth().signInWithEmailAndPassword(username, password);
+        return auth.signInWithEmailAndPassword(username, password);
     }
 
     /**
      * Log out the current user
      */
     export const logout = () => {
-        firebase.auth().signOut();
+        auth.signOut();
     }
 
     /**
      * Get the current logged user
      */
     export const getCurrentUser = () => {
-        return firebase.auth().currentUser;
+        return auth.currentUser;
     }
 
     /**
@@ -56,7 +56,7 @@ const CHAT_ROOM = 'mychatroom1';
      * @param {} message 
      */
     export const saveMessage = (language,message) => {  
-        return firebase.firestore().collection(COLLECTION_NAME).doc(CHAT_ROOM+'-'+language)
+        return db.collection(COLLECTION_NAME).doc(CHAT_ROOM+'-'+language)
                 .update(
                         { 
                             chat: firebase.firestore.FieldValue.arrayUnion(message)
@@ -72,5 +72,5 @@ const CHAT_ROOM = 'mychatroom1';
      * @param {} callback 
      */
     export const onMessageArrived = (language,callback) => {
-        return firebase.firestore().collection(COLLECTION_NAME).doc(CHAT_ROOM+'-'+language).onSnapshot(callback);
+        return db.collection(COLLECTION_NAME).doc(CHAT_ROOM+'-'+language).onSnapshot(callback);
     }

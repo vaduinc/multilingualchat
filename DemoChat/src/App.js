@@ -4,13 +4,12 @@
  * It is shared across both Android and iOS.
  */
 import React from 'react';
-import InitializeFirebase from "./config/ConfigFirebase"; // This will initialize Firebase
+import {firebase , firebaseApi} from './firebase';
 import { View, Text} from 'react-native';
 import * as androidfix from "./androidfix";
 import LoginOrSignup from './screens/LoginOrSignup';
 import Chat from './screens/Chat';
 import generalCSS from './styles/styles.css';
-import {onAuthStateChanged} from './api/firebaseAPI';
 
 
 export default class App extends React.Component {
@@ -46,7 +45,7 @@ export default class App extends React.Component {
    * Once subscribed, the 'user' parameter will either be null (logged out) or an Object (logged in)
    */
   componentDidMount() {
-    this.authSubscription = onAuthStateChanged(this.setMyState);
+    this.authSubscription = firebaseApi.onAuthStateChanged(this.setMyState);
   }
 
   /**

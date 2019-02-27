@@ -4,7 +4,7 @@ import {GiftedChat, Day} from 'react-native-gifted-chat';
 import Button from '../ui/Button';
 import moment from 'moment';
 import generalCSS from '../styles/styles.css';
-import {saveMessage, logout, getCurrentUser, onMessageArrived} from '../api/firebaseAPI';
+import {firebaseApi} from '../firebase';
 
 
 class Chat extends React.Component {
@@ -58,7 +58,7 @@ class Chat extends React.Component {
       this.unsubscribeFromChat();
     }
 
-    this.chatSubscription = onMessageArrived(language, this.setMyState);
+    this.chatSubscription = firebaseApi.onMessageArrived(language, this.setMyState);
   }
 
   async componentDidMount() {
@@ -68,12 +68,13 @@ class Chat extends React.Component {
 
     let myUser = {
       _id: this.props.user.uid,
+      id: this.props.user.uid,
       name : this.props.user.email
     }
 
-    this.setState({myUser});
+    await this.setState({myUser});
 
-    this.subscribeToChat(this.state.language);
+    await this.subscribeToChat(this.state.language);
 
   }
 
@@ -84,8 +85,12 @@ class Chat extends React.Component {
     message.createdAt = moment(message.createdAt).format();
     message.language = this.state.language;
     message.source = 'mobile';
+    
+    // only needed because there is WEB version, and giftedChat uses
+    // id instead of _id when loading the messages.
+    message.id = message._id;
 
-    saveMessage(this.state.language,message)
+    firebaseApi.saveMessage(this.state.language,message)
       .then(()=>console.log('message saved!'));
   }
 
@@ -110,7 +115,7 @@ class Chat extends React.Component {
 
   logOff() {
     try {
-        logout();
+      firebaseApi.logout();
     } catch (error) {
         this.setState({
             response: error.toString()

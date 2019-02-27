@@ -36,12 +36,12 @@ exports.updateChatMessage = functions.firestore
             const messages = newValue.chat;
             const lastMessage = messages[messages.length - 1] ;
 
-            if(lastMessage.source!=='mobile'){
+            if(lastMessage.source==='translated'){
                 console.log('lastMessage was already translated!!!');
                 console.log(lastMessage);
                 return null;
             }
-            console.log('LETS TRANSLATE THE MESSAGE');
+            console.log('LETS TRANSLATE THIS MESSAGE');
             console.log(lastMessage);
 
             const targetLanguages = LANGUAGES.filter((langId) => langId!==lastMessage.language);
@@ -54,12 +54,10 @@ exports.updateChatMessage = functions.firestore
     );  
 
 
-/**
- * 
+/** 
+ *  Translates some text (message) from language to a target language (parameter)
  */    
 translateMessage = (language, lastMessage) =>{
-
-    console.log(' RIGHT BEFORE.... ');
 
     return translate.translate(lastMessage.text, {from: lastMessage.language, to: language})
             .then((results) => {
@@ -82,6 +80,10 @@ translateMessage = (language, lastMessage) =>{
             });
 }
 
+/**
+ * Saves the new translated message into the right chatroom language
+ * collection.
+ */
 saveMessage = (language,message) => {  
     return firestore.collection(COLLECTION_NAME).doc(CHAT_ROOM+'-'+language)
             .update(
