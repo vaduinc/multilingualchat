@@ -1,4 +1,4 @@
 **/nodemodules
-**/config.js
+/demochatweb/src/firebase/config.js
 **/demochatNS
 **/.firebase
