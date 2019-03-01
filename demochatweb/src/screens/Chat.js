@@ -160,6 +160,7 @@ class Chat extends React.Component {
                               <select onChange={this.onLanguageChange}> >
                                 <option selected  value="en">English</option>
                                 <option  value="es">Español</option>
+                                <option  value="pt">Portugues</option>
                               </select>
                             </div>
                         </div>

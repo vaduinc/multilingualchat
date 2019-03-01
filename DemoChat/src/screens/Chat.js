@@ -160,6 +160,7 @@ class Chat extends React.Component {
                                     onValueChange={(itemValue, itemIndex) => this.onLanguageChange(itemValue, itemIndex)}>
                                     <Picker.Item label="English" value="en" />
                                     <Picker.Item label="Español" value="es" />
+                                    <Picker.Item label="Portugues" value="pt" />
                                 </Picker>
                             </View>
                             <View style={generalCSS.chat_submit}>

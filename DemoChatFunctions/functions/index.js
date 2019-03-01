@@ -17,7 +17,7 @@ const translate = new Translate({
 // detects authentication from the environment.
 const firestore = admin.firestore();
 
-const LANGUAGES = ['en', 'es'];
+const LANGUAGES = ['en', 'es', 'pt'];
 const COLLECTION_NAME = 'chats';
 const CHAT_ROOM = 'mychatroom1';
 
@@ -45,6 +45,7 @@ exports.updateChatMessage = functions.firestore
             console.log(lastMessage);
 
             const targetLanguages = LANGUAGES.filter((langId) => langId!==lastMessage.language);
+            console.log('TARGET LANGUAGES ');
             console.log(targetLanguages);
             
             let translatePromises = targetLanguages.map((lang) => translateMessage(lang,lastMessage));
