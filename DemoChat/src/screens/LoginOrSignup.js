@@ -52,7 +52,7 @@ class LoginOrSignup extends Component {
                     <Text style={generalCSS.login_error}>{this.state.error}</Text>
                 </View>
                 <View style={generalCSS.login_form}>
-                    <Text style={generalCSS.login_title}>React Native + Firebase</Text>
+                    <Text style={generalCSS.login_title}>ITalkThat2</Text>
                     <View style={[generalCSS.login_buttonContainer]}>
                         <TextInput
                             onChangeText={(username) => this.setState({username})}
@@ -65,6 +65,7 @@ class LoginOrSignup extends Component {
                             onChangeText={(password) => this.setState({password})}
                             style={generalCSS.login_input}
                             placeholder='password'
+                            secureTextEntry={true}
                         />
                     </View>
                     <View style={generalCSS.login_submit}>

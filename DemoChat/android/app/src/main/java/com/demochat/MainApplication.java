@@ -19,10 +19,20 @@ public class MainApplication extends Application implements ReactApplication {
       return BuildConfig.DEBUG;
     }
 
-    @Override
+//    @Override
+//    protected List<ReactPackage> getPackages() {
+//      List<ReactPackage> packages = Arrays.<ReactPackage>asList(
+//          new MainReactPackage()
+//      );
+//
+//      TransformerPackage transPkg = new TransformerPackage();
+//      return packages.add(transPkg);
+//    }
+
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+              new MainReactPackage(),
+              new TransformerPackage()
       );
     }
 

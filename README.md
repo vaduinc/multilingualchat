@@ -56,3 +56,7 @@ export const getDataConfig = () => {
    messagingSenderId: "SOME ID HERE - PROVIDED BY FIREBASE"
  }
 }
+
+
+```
+Set NODE - nvm to v8

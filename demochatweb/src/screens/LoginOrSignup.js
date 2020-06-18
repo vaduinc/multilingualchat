@@ -62,7 +62,7 @@ class LoginOrSignup extends Component {
                 </div>
                 <div className='container gutters'>
                     <div className='one'>
-                        <label className='login_title'>React (Native) + Firebase</label>
+                        <label className='login_title'>ITalkThat2</label>
                     </div>
                 </div>
                 <div className='container gutters'>
@@ -78,6 +78,7 @@ class LoginOrSignup extends Component {
                         <input className='login_input'
                             onChange={event => this.setStateWithEvent(event, 'password')}
                             placeholder='password'
+                            type="password"
                         />
                     </div>
                 </div>

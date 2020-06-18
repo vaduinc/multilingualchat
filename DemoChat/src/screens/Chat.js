@@ -5,6 +5,7 @@ import Button from '../ui/Button';
 import moment from 'moment';
 import generalCSS from '../styles/styles.css';
 import {firebaseApi} from '../firebase';
+//import TransformerText from '../util/TransformerText';
 
 
 class Chat extends React.Component {
@@ -34,6 +35,19 @@ class Chat extends React.Component {
     this.unsubscribeFromChat();
   }
 
+  // // async function to call the Java native method
+  // async encodeText(message) {
+  //   //TransformerText.encode(message,(err) => {console.log(err)}, (msg) => {console.log(msg)} );
+  //   const {
+  //     source,
+  //     target
+  //   } = await TransformerText.encode(message);
+  //   console.log('encoded ' + target);
+  //   console.log(source);
+  //   console.log('DECODED');
+  //   console.log(atob(target));
+  //   return source
+  // }
 
   /**
    * Set the state every time a new message arrives
@@ -89,6 +103,10 @@ class Chat extends React.Component {
     // only needed because there is WEB version, and giftedChat uses
     // id instead of _id when loading the messages.
     message.id = message._id;
+
+    // console.log('about to encode message');
+    // let encodedMsg = this.encodeText(message.text);
+    // console.log(encodedMsg);
 
     firebaseApi.saveMessage(this.state.language,message)
       .then(()=>console.log('message saved!'));

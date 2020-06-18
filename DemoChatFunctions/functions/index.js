@@ -25,6 +25,8 @@ exports.updateChatMessage = functions.firestore
     .document('chats/{chatId}')
     .onUpdate(
         (change, context) => {
+            console.log('Context');
+            console.log('context');
 
             const chatId = `${context.params.chatId}`;  
             console.log(chatId);
